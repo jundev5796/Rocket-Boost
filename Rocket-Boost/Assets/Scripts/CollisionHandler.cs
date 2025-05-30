@@ -1,5 +1,6 @@
 using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -17,8 +18,14 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Got Fuel!");
                 break;
             default:
-                Debug.Log("You crashed!");
+                ReloadLevel();
                 break;
+        }
+
+        void ReloadLevel()
+        {
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene);
         }
     }
 }
