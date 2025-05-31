@@ -1,10 +1,20 @@
 using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float levelLoadDelay = 2f;
+    [SerializeField] AudioClip crash;
+    [SerializeField] AudioClip success;
+
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -25,6 +35,7 @@ public class CollisionHandler : MonoBehaviour
     void StartSuccessSequence()
     {
         // todo add sfx and particles
+        audioSource.PlayOneShot(success);
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", levelLoadDelay);
     }
@@ -32,6 +43,7 @@ public class CollisionHandler : MonoBehaviour
     void StartCrashSequence()
     {
         // todo add sfx and particles
+        audioSource.PlayOneShot(crash);
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", levelLoadDelay);
     }
