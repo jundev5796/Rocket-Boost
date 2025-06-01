@@ -63,11 +63,29 @@ public class Movement : MonoBehaviour
         if (rotationInput < 0)
         {
             ApplyRotation(rotationStrength);
+
+            if (!rightBooster.isPlaying)
+            {
+                leftBooster.Stop();
+                rightBooster.Play();
+            }
         }
 
         else if (rotationInput > 0)
         {
             ApplyRotation(-rotationStrength);
+
+            if (!leftBooster.isPlaying)
+            {
+                rightBooster.Stop();
+                leftBooster.Play();
+            }
+        }
+
+        else
+        {
+            rightBooster.Stop();
+            leftBooster.Stop();
         }
     }
 
