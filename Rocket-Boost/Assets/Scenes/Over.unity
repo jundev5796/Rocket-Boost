@@ -752,6 +752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 6065524665625145998, guid: cee7d2c48e57e1645a630ee08a324380, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7195308369623794160, guid: cee7d2c48e57e1645a630ee08a324380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.88
